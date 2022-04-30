@@ -11,7 +11,7 @@ import { LivroService } from "../livro.service";
 export class LivroReadAllComponent implements OnInit {
   displayedColumns: string[] = ["id", "titulo", "livros", "acoes"];
 
-  id_cat: String = "";
+  id_cat: string = "";
   livros: Livro[] = [];
 
   constructor(

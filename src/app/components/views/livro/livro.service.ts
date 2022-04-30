@@ -10,16 +10,16 @@ import { Livro } from './livro.model';
 })
 export class LivroService {
 
-  baseUrl: String = environment.baseUrl
+  baseUrl: string = environment.baseUrl
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
-  findAllByCategoria(id_cat: String): Observable<Livro[]> {
+  findAllByCategoria(id_cat: string): Observable<Livro[]> {
     const url = `${this.baseUrl}/livros?categoria=${id_cat}`
     return this.http.get<Livro[]>(url)
   }
 
-  findById(id: String):Observable<Livro>{
+  findById(id: string):Observable<Livro>{
     const url = `${this.baseUrl}/livros/${id}`
     return this.http.get<Livro>(url)
   }
@@ -29,17 +29,17 @@ export class LivroService {
     return this.http.put<Livro>(url, livro)
   }
 
-  create(livro: Livro, id_cat: String): Observable<Livro> {
+  create(livro: Livro, id_cat: string): Observable<Livro> {
     const url = `${this.baseUrl}/livros?categoria=${id_cat}`
     return this.http.post<Livro>(url, livro)
   }
 
-  delete(id: String):Observable<void> {
+  delete(id: string):Observable<void> {
     const url = `${this.baseUrl}/livros/${id}`
     return this.http.delete<void>(url)
   }
 
-  mensagem(str: String): void {
+  mensagem(str: string): void {
     this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'end',
       verticalPosition: 'top',

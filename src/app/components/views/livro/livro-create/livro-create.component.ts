@@ -10,7 +10,7 @@ import { LivroService } from "../livro.service";
   styleUrls: ["./livro-create.component.css"],
 })
 export class LivroCreateComponent implements OnInit {
-  id_cat: String = "";
+  id_cat: string = "";
 
   livro: Livro = {
     id: "",
@@ -34,12 +34,15 @@ export class LivroCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.service.create(this.livro, this.id_cat).subscribe((resposta) => {
+    this.service.create(this.livro, this.id_cat).subscribe({
+      next: () => {
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       this.service.mensagem("Livro criado com sucesso!");
-    }, err => {
+    },
+     error: (e) => {
       this.router.navigate([`categorias/${this.id_cat}/livros`]);
       this.service.mensagem("Erro ao criar novo livro! Tente mais tarde!");
+     },
     });
   }
 
